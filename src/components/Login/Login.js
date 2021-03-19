@@ -11,8 +11,10 @@ const Login = () => {
     const history = useHistory();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
-    if (firebase.app.length === 0) {
+    if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
+    } else {
+        firebase.app(); // if already initialized, use that one
     }
 
 
